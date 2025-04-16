@@ -40,5 +40,20 @@ const createUser = async newUser => {
     }
 }
 
+const getUserByEmail = async email => {
+    try {
+        const user = await User.findOne({ email: email });
 
-module.exports = { createUser }
+        if (user) return user;
+
+        throw new ApiError(httpStatus.NOT_FOUND, "User Not Found");
+    } catch (error) {
+        throw new ApiError(
+            httpStatus.INTERNAL_SERVER_ERROR,
+            error.message
+        );
+    }
+}
+
+
+module.exports = { createUser, getUserByEmail }
