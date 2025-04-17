@@ -22,6 +22,8 @@ app.use("/api/", routes)
 
 app.use("/api/test", testRoute);
 
+app.get("/", (req, res) => res.json({ msg: "Hello from server..." }));
+
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
     next(new ApiError(httpStatus.NOT_FOUND, "API Route Not found"));
