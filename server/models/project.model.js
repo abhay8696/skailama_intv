@@ -1,8 +1,7 @@
-// models/Project.js
-import mongoose from 'mongoose';
+const mongoose = require("mongoose");
 
-const projectSchema = new mongoose.Schema({
-    user: { 
+const ProjectSchema = new mongoose.Schema({
+    userId: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', 
         required: true 
@@ -24,4 +23,9 @@ const projectSchema = new mongoose.Schema({
     timestamps: true 
 });
 
-export default mongoose.model('Project', projectSchema);
+// Unique project name per user
+ProjectSchema.index({ user: 1, name: 1 }, { unique: true });
+
+const Project = mongoose.model("Project", ProjectSchema);
+
+module.exports.Project = Project;
