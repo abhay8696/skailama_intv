@@ -31,7 +31,10 @@ UserSchema.statics.isEmailTaken = async function (email) {
 /**
  * Check if entered password matches the user's password
  */
-UserSchema.methods.isPasswordMatch = async password => password === this.password;
+UserSchema.methods.isPasswordMatch = async function(password) {
+    console.log(password, this.password);
+    return password === this.password
+};
 
 
 const User = mongoose.model("User", UserSchema);

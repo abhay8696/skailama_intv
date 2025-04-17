@@ -22,7 +22,7 @@ const ApiError = require("../utils/ApiError")
 
 const createUser = async newUser => {
     const { name, email, password } = newUser;
-    // console.log(newUser);
+    console.log(newUser);
 
     // check if email is unique
     const isEmailTaken = await User.isEmailTaken(email);
@@ -48,9 +48,12 @@ const getUserByEmail = async email => {
 
         throw new ApiError(httpStatus.NOT_FOUND, "User Not Found");
     } catch (error) {
+        
+        console.log(error);
+        
         throw new ApiError(
             httpStatus.INTERNAL_SERVER_ERROR,
-            error.message
+            "Internal Server Error"
         );
     }
 }
