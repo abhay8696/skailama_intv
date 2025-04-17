@@ -20,4 +20,11 @@ const updatePodcast = async (req, res) => {
     res.status(200).send({podcast, message: "File updated successfully."});
 }
 
-module.exports = { createPodcast, getPodcast, updatePodcast };
+
+const deletePodcast = async (req, res) => {
+    const deleteMessage = await podcastService.deletePodcast(req.params.id);
+
+    res.status(200).send(deleteMessage);
+}
+
+module.exports = { createPodcast, getPodcast, updatePodcast, deletePodcast };

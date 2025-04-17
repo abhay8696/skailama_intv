@@ -109,5 +109,48 @@ const updatePodcast = async (id, updates) => {
     }
 }
 
+/**
+ * Function to delete a podcast by id
+ *  - check if the podcast with given id exist
+ *  - If yes, delete a podcast object
+ *  - else, throw an error 
+ */
+const deletePodcast = async id => {
+    try{
+        // Find the podcast to get its associated project
+        const podcast = await Podcast.findById(id);
+        if (!podcast) {
+            throw new ApiError(404, 'podcast not found');
+        }
 
-module.exports = { createPodcast, getPodcast, updatePodcast };
+        const projectId = Podcast.projectId;
+
+        //delete the podcast
+        await Podcast.findByIdAndDelete(id);
+
+        //update the related project
+        await Project.findByIdAndUpdate(
+            projectId,
+            {
+            $inc: { fileCount: -1 },
+            $set: { lastUpdated: new Date() }
+            },
+            { new: true }
+        );
+
+        return { message: 'File deleted successfully' };
+
+    }catch(error){
+        console.log(error);
+        // If it's an instance of ApiError, just rethrow it
+        if (error instanceof ApiError) throw error;
+
+        throw new ApiError(
+            500,
+            "Internal Server Error"
+        );
+    }
+}
+
+
+module.exports = { createPodcast, getPodcast, updatePodcast, deletePodcast };

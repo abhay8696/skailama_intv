@@ -22,4 +22,10 @@ router.put(
     podcastController.updatePodcast
 );
 
+router.delete(
+    "/:id",
+    auth,
+    podcastController.deletePodcast
+);
+
 module.exports = router;
