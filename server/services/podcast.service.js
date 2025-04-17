@@ -118,22 +118,23 @@ const updatePodcast = async (id, updates) => {
 const deletePodcast = async id => {
     try{
         // Find the podcast to get its associated project
-        const podcast = await Podcast.findById(id);
-        if (!podcast) {
+        const file = await Podcast.findById(id);
+        if (!file) {
             throw new ApiError(404, 'podcast not found');
         }
 
-        const projectId = Podcast.projectId;
+        const projectId = file.projectId;
 
         //delete the podcast
         await Podcast.findByIdAndDelete(id);
 
         //update the related project
+
         await Project.findByIdAndUpdate(
             projectId,
             {
-            $inc: { fileCount: -1 },
-            $set: { lastUpdated: new Date() }
+                $inc: { fileCount: -1 },
+                $set: { lastUpdated: new Date() }
             },
             { new: true }
         );

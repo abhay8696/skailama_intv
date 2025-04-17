@@ -15,4 +15,10 @@ const getProject = async (req, res) => {
     res.status(200).send({project});
 }
 
-module.exports = { createProject, getProject }
+const getAllProjects = async (req, res) => {
+    const allProjects = await projectService.getAllProjects(req.user._id);
+
+    res.status(200).send({projects: allProjects});
+}
+
+module.exports = { createProject, getProject, getAllProjects }

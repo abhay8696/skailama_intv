@@ -1,3 +1,4 @@
+const { Podcast } = require("../models/podcast.model");
 const { Project } = require("../models/project.model");
 const ApiError = require("../utils/ApiError");
 
@@ -41,8 +42,12 @@ const getProject = async id => {
                 404,
                 "Project not found"
             );
-        
-        return project;
+        const podcasts = await Podcast.find({projectId: id});
+
+        return {
+            ...project.toObject(),
+            podcasts 
+        }
     }catch(error){
         console.log(error);
         // If it's an instance of ApiError, just rethrow it
@@ -55,4 +60,29 @@ const getProject = async id => {
     }
 }
 
-module.exports = { createProject, getProject };
+
+/**
+ * Function to get a all projects based on user
+ *  - If the project does not exist 
+ *  - If so throw an error 
+ *  - Otherwise, return a Project object
+ */
+const getAllProjects = async userId => {
+    try{
+        const allProjects = await Project.find({userId});
+
+        return allProjects;
+    }catch(error){
+        console.log(error);
+        // If it's an instance of ApiError, just rethrow it
+        if (error instanceof ApiError) throw error;
+
+        throw new ApiError(
+            500,
+            "Internal Server Error"
+        );
+    }
+}
+
+
+module.exports = { createProject, getProject, getAllProjects };

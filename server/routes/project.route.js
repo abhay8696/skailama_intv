@@ -10,10 +10,16 @@ router.post(
     projectController.createProject
 );
 
+
+router.get(
+    "/all",
+    auth,
+    projectController.getAllProjects
+);
+
 router.get(
     "/:id",
     auth,
     projectController.getProject
 );
-
 module.exports = router;
