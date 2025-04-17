@@ -7,4 +7,10 @@ const createPodcast = async (req, res) => {
     res.status(201).send({podcast: newPodcast, message: "New file created successfully."});
 }
 
-module.exports = { createPodcast };
+const getPodcast = async (req, res) => {
+    const podcast = await podcastService.getPodcast(req.params.id);
+
+    res.status(200).send({podcast});
+}
+
+module.exports = { createPodcast, getPodcast };

@@ -10,4 +10,10 @@ router.post(
     podcastController.createPodcast
 );
 
+router.get(
+    "/:id",
+    auth,
+    podcastController.getPodcast
+);
+
 module.exports = router;
