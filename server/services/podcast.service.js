@@ -70,5 +70,44 @@ const getPodcast = async id => {
     }
 }
 
+/**
+ * Function to update a podcast by id
+ *  - check if the podcast with given id exist
+ *  - If yes, return a podcast object
+ *  - else, throw an error 
+ */
+const updatePodcast = async (id, updates) => {
+    try{
+        // Prevent projectId from being modified
+        if ('project' in updates || 'projectId' in updates) {
+          throw new ApiError(400, "Modifying 'projectId' is not allowed");
+        }
+        // Update podcast
+        const updatedPodcast = await Podcast.findByIdAndUpdate(id, updates, {
+            new: true,
+            runValidators: true,
+        });
 
-module.exports = { createPodcast, getPodcast };
+        if (!updatedPodcast) throw new ApiError(404, 'Podcast not found');
+
+         // Update the parent project's lastUpdated field
+        await Project.findByIdAndUpdate(updatedPodcast.projectId, {
+            $set: { lastUpdated: new Date() },
+        });
+  
+        return updatedPodcast;
+
+    }catch(error){
+        console.log(error);
+        // If it's an instance of ApiError, just rethrow it
+        if (error instanceof ApiError) throw error;
+
+        throw new ApiError(
+            500,
+            "Internal Server Error"
+        );
+    }
+}
+
+
+module.exports = { createPodcast, getPodcast, updatePodcast };

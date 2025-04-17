@@ -13,4 +13,11 @@ const getPodcast = async (req, res) => {
     res.status(200).send({podcast});
 }
 
-module.exports = { createPodcast, getPodcast };
+
+const updatePodcast = async (req, res) => {
+    const podcast = await podcastService.updatePodcast(req.params.id, req.body);
+
+    res.status(200).send({podcast, message: "File updated successfully."});
+}
+
+module.exports = { createPodcast, getPodcast, updatePodcast };

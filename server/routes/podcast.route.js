@@ -16,4 +16,10 @@ router.get(
     podcastController.getPodcast
 );
 
+router.put(
+    "/:id",
+    auth,
+    podcastController.updatePodcast
+);
+
 module.exports = router;
