@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Welcome.css";
 import logo from "../../assets/mainLogo-white.svg"
 import logo2 from "../../assets/logo-purple.svg"
@@ -7,6 +8,12 @@ import Register from './Register';
 
 const Welcome = () => {
     const [loginPage, setLoginPage] = useState(true);
+    const navigate = useNavigate();
+
+    useEffect(()=> {
+        const userData = JSON.parse(localStorage.getItem("userData"));
+        if(userData?.token?.access?.token) navigate("/home")
+    }, [])
 
     //fuction
     const handleLoginPage = () => setLoginPage(!loginPage)

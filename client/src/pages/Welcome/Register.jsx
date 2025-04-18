@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = ({switchToLogin}) => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -22,9 +24,14 @@ const Register = ({switchToLogin}) => {
         
         try{
             let res = await axios.post("https://server-skailama-intv.vercel.app/api/auth/register", formData);
-            console.log(res)
+            if(res.status === 201){
+                alert("Registeration and Login successfull!");
+                localStorage.setItem("userData", JSON.stringify(res.data));
+                navigate("/home");
+            }
         }catch(error){
-            console.log(error.message)
+            let msg = error?.response?.data?.message || "Something went wrong!";
+            alert(msg)
         }
     }
     return (
