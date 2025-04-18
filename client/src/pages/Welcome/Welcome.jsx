@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Welcome.css";
 import logo from "../../assets/mainLogo-white.svg"
 import logo2 from "../../assets/logo-purple.svg"
+import Login from './Login';
+import Register from './Register';
 
 const Welcome = () => {
+    const [loginPage, setLoginPage] = useState(true);
+
+    //fuction
+    const handleLoginPage = () => setLoginPage(!loginPage)
     return (
         <div className='Welcome'>
             <div className='Welcome-body'>
@@ -20,24 +26,9 @@ const Welcome = () => {
                             <span>Ques.AI</span>
                         </span>
                     </div>
-                    <form className='auth-form'>
-                        <input placeholder='Email Address' type='email' />
-                        <input placeholder='Password' type='password' />
-                        <div className='auth-forgot-remember'>
-                            <span>
-                                <input type='checkbox' htmlFor="rememberme" />
-                                <label>Remember me</label>
-                            </span>
-                            <span className='forgot-passowrd'>
-                                Forgot Password?
-                            </span>
-                        </div>
-                        <button type='submit'>Login</button>
-                    </form>
-                    <div className='auth-createAccount'>
-                        <span>Don't have an account?</span>
-                        <span>Create Account</span>
-                    </div>
+                    {
+                        loginPage ? <Login switchToRegister={handleLoginPage}/> : <Register switchToLogin={handleLoginPage}/> 
+                    }
                 </div>
             </div>
         </div>
