@@ -3,7 +3,7 @@ import cloudImage from "../../assets/cloudImage.png"
 import UploadModal from './UploadModal';
 import uploadImage from "../../assets/uploadImage.png"; 
 import "./FileDiv.css"
-import { formatDate } from '../../functions/functions';
+import { deletePodcast, formatDate } from '../../functions/functions';
 
 
 
@@ -31,7 +31,7 @@ const FileDiv = ({fileArray}) => {
         const displayFiles = () => {
             let count = 1;
             return fileArray.map(item => {
-                const { name, transcript, createdAt, updatedAt, projectId} = item;
+                const { name, transcript, createdAt, updatedAt, projectId, _id} = item;
                 return(
                     <tr>
                         <td>{count++}</td>
@@ -39,7 +39,7 @@ const FileDiv = ({fileArray}) => {
                         <td>{formatDate(createdAt)}</td>
                         <td className='tbaleButtons'>
                             <button className='viewButton'>View</button>
-                            <button className='deleteButton'>Delete</button>
+                            <button className='deleteButton' onClick={()=> deleteFile(_id)}>Delete</button>
                         </td>
                     </tr>
                 )
@@ -65,7 +65,13 @@ const FileDiv = ({fileArray}) => {
         )
     }
 
+    const deleteFile = async id => {
+        let res = await deletePodcast(id);
+        alert(res);
+        window.location.reload();
+    }
     return (
+        
         <div className='fileDiv'>
             {fileArray?.length ? <YourFiles fileArray={fileArray}/> : selectFile()}
         </div>

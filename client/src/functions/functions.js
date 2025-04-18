@@ -78,3 +78,15 @@ export const createNewPodcast = async (payload) => {
     if(response.status === 201) return response;
     else throw new Error("Internal Server Error");
 }
+
+export const deletePodcast = async id => {
+    let response = await axios.delete(`https://server-skailama-intv.vercel.app/api/podcast/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json' // optional; axios sets this automatically for JSON
+        }
+    })
+    console.log(response)
+    if(response.status === 200) return response.data.message;
+    else throw new Error("Internal Server Error");
+}
