@@ -13,6 +13,9 @@
 }
 .transcirpt-head h1{ 
     font-size: 40px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .transcirpt-head button{ 

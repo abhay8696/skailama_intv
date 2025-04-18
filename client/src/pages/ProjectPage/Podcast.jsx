@@ -33,7 +33,7 @@ const PodcastType = ({head, image, projectId}) => {
 
 
 
-const Podcast = ({fileArray, projectId}) => {
+const Podcast = ({fileArray, projectId, handleTranscript}) => {
     return (
         <div className='Podcast'>
             <h1>Add Podcast</h1>
@@ -42,7 +42,7 @@ const Podcast = ({fileArray, projectId}) => {
                 <PodcastType projectId={projectId} head="Youtube Video" image={youtubeImage}/>
                 <PodcastType projectId={projectId} head="Upload Files" image={uploadImage}/>
             </div>
-            <FileDiv fileArray={fileArray}/>
+            <FileDiv handleTranscript={handleTranscript} fileArray={fileArray}/>
         </div>
     );
 };

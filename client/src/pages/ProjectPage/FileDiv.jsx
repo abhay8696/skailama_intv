@@ -3,11 +3,11 @@ import cloudImage from "../../assets/cloudImage.png"
 import UploadModal from './UploadModal';
 import uploadImage from "../../assets/uploadImage.png"; 
 import "./FileDiv.css"
-import { deletePodcast, formatDate } from '../../functions/functions';
+import { deletePodcast, formatDate, getPodcastById } from '../../functions/functions';
 
 
 
-const FileDiv = ({fileArray}) => {
+const FileDiv = ({fileArray, handleTranscript}) => {
 
     const [modalOn, setModalOn] = useState(false);
 
@@ -38,7 +38,7 @@ const FileDiv = ({fileArray}) => {
                         <td>{name}</td>
                         <td>{formatDate(createdAt)}</td>
                         <td className='tbaleButtons'>
-                            <button className='viewButton'>View</button>
+                            <button className='viewButton' onClick={() => viewPodCast(_id)}>View</button>
                             <button className='deleteButton' onClick={()=> deleteFile(_id)}>Delete</button>
                         </td>
                     </tr>
@@ -65,11 +65,18 @@ const FileDiv = ({fileArray}) => {
         )
     }
 
+    const viewPodCast = async id => {
+        let data = await getPodcastById(id);
+        handleTranscript(data);
+    } 
+
     const deleteFile = async id => {
         let res = await deletePodcast(id);
         alert(res);
         window.location.reload();
     }
+
+
     return (
         
         <div className='fileDiv'>

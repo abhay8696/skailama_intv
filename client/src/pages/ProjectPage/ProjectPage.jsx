@@ -14,6 +14,7 @@ const ProjectPage = () => {
 
     const [projectData, setProjectData] = useState({});
     const [fileArray, setFileArray] = useState([]);
+    const [transcirptData, setTranscirptData] = useState(null);
     
     useEffect(()=> {
         const userData = localStorage.getItem("userData");
@@ -30,15 +31,21 @@ const ProjectPage = () => {
         setProjectData(project);
         setFileArray(project.podcasts);
     } 
-
+    const handleTranscript = data => setTranscirptData(data);
+    const closeTranscript = data => setTranscirptData(null);
 
     return (
         <div className='ProjectPage'>
             <Sidebar />
             <div className='ProjectPage-body'>
                 <ProjectNavbar projectName={projectData.name}/>
-                <Podcast fileArray={fileArray} projectId={projectId}/>
                 {/* <Transcript /> */}
+                {
+                    transcirptData ?
+                    <Transcript transcirptData={transcirptData} closeTranscript={closeTranscript}/>
+                    :
+                    <Podcast fileArray={fileArray} projectId={projectId} handleTranscript={handleTranscript}/>
+                }
             </div>
         </div>
     );

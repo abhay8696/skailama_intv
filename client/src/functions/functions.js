@@ -79,6 +79,18 @@ export const createNewPodcast = async (payload) => {
     else throw new Error("Internal Server Error");
 }
 
+export const getPodcastById = async id => {
+    let response = await axios.get(`https://server-skailama-intv.vercel.app/api/podcast/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json' // optional; axios sets this automatically for JSON
+        }
+    })
+    console.log(response.data)
+    if(response.status === 200) return response.data.podcast;
+    else throw new Error("Internal Server Error");
+}
+
 export const deletePodcast = async id => {
     let response = await axios.delete(`https://server-skailama-intv.vercel.app/api/podcast/${id}`, {
         headers: {
@@ -88,5 +100,18 @@ export const deletePodcast = async id => {
     })
     console.log(response)
     if(response.status === 200) return response.data.message;
+    else throw new Error("Internal Server Error");
+}
+
+export const updatePodcast = async (id, payload) => {
+    // return console.log(id, payload)
+    let response = await axios.put(`https://server-skailama-intv.vercel.app/api/podcast/${id}`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json' // optional; axios sets this automatically for JSON
+        }
+    })
+    console.log(response)
+    if(response.status === 200) return response.data;
     else throw new Error("Internal Server Error");
 }

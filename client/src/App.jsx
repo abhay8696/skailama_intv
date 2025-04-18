@@ -4,6 +4,7 @@ import './App.css'
 import Welcome from './pages/Welcome/Welcome'
 import Home from './pages/Home/Home';
 import ProjectPage from './pages/ProjectPage/ProjectPage';
+import Transcript from './pages/ProjectPage/Transcript';
 
 function App() {
   const [count, setCount] = useState(0)
