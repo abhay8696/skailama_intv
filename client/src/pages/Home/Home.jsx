@@ -12,7 +12,7 @@ const Home = () => {
 
     useEffect(()=> {
         console.log("use effect")
-        const userData = localStorage.getItem("userData");
+        const userData = JSON.parse(localStorage.getItem("userData"));
         if(!userData){
             navigate("/");
         }
@@ -26,7 +26,7 @@ const Home = () => {
             setProjectsArray([...res.projects])
         }catch(error){
             let msg = error?.response?.data?.message || "Something went wrong!";
-            alert(msg);
+            // alert(msg);
         }
     }
 

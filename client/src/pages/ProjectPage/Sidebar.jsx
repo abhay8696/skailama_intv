@@ -10,6 +10,16 @@ import daimondIcon from "../../assets/daimondIcon.svg"
 import closeArrowIcon from "../../assets/closeArrowIcon.svg"
 
 const Sidebar = () => {
+
+    const displayUser = () => {
+        let data = JSON.parse(localStorage.getItem("userData"))?.user;
+        return (
+            <span className='userDiv-texts'>
+                <span className='userName'>{data?.name}</span>
+                <span className='userEmail'>{data?.email}</span>
+            </span>
+        )
+    }
     return (
         <div className='Sidebar'>
             <img src={textLogo} className='sidebarLogo' />
@@ -39,10 +49,9 @@ const Sidebar = () => {
                 <div className='breakDiv'></div>
                 <div className='userDiv'>
                     <img src={userImage} className='userImage'/>
-                    <span className='userDiv-texts'>
-                        <span className='userName'>Username</span>
-                        <span className='userEmail'>useremal@gmail.com</span>
-                    </span>
+                    {
+                        displayUser()
+                    }
                 </div>
             </div>
             <img src={closeArrowIcon} className='closeSidebar-button'/>

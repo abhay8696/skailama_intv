@@ -5,6 +5,10 @@ import bellIcon2 from "../../assets/bellIcon2.svg";
 import logoutIcon from "../../assets/logoutIcon.svg";
 
 const ProjectNavbar = ({projectName}) => {
+    const logout = () => {
+        localStorage.removeItem("userData");
+        window.location.reload();
+    }
     return (
         <div className='ProjectNavbar'>
             <div className='ProjectNavbar-texts'>
@@ -22,7 +26,7 @@ const ProjectNavbar = ({projectName}) => {
                     <img src={bellIcon2} />
                 </span>
                 <span>
-                    <img src={logoutIcon} />
+                    <img src={logoutIcon} onClick={logout}/>
                 </span>
             </div>
         </div>

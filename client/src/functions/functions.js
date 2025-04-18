@@ -1,7 +1,8 @@
 import axios from "axios"
-let token = JSON.parse(localStorage.getItem("userData"))?.token?.access?.token
 
 export const getAllProjects = async () => {
+    const token = JSON.parse(localStorage.getItem("userData"))?.token?.access?.token;
+    if(!token) return;
     console.log("getting all projects from db")
     const response = await axios.get("https://server-skailama-intv.vercel.app/api/project/all",  {
         headers: {
@@ -15,6 +16,7 @@ export const getAllProjects = async () => {
 }
 
 export const createProject = async (payload) => {
+    const token = JSON.parse(localStorage.getItem("userData"))?.token?.access?.token;
     let response = await axios.post('https://server-skailama-intv.vercel.app/api/project/new', payload, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -27,6 +29,7 @@ export const createProject = async (payload) => {
 }
 
 export const formatDate = (dateString) => {
+    const token = JSON.parse(localStorage.getItem("userData"))?.token?.access?.token;
     const date = new Date(dateString);
   
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -36,6 +39,7 @@ export const formatDate = (dateString) => {
   }
   
 export const generateShortCode = (input) => {
+    const token = JSON.parse(localStorage.getItem("userData"))?.token?.access?.token;
     if (!input) return '';
   
     const words = input.trim().split(/\s+/);
@@ -55,6 +59,7 @@ export const generateShortCode = (input) => {
 }
 
 export const getProjectById = async projectId => {
+    const token = JSON.parse(localStorage.getItem("userData"))?.token?.access?.token;
     console.log("getting all podcasts in this project")
     let response = await axios.get(`https://server-skailama-intv.vercel.app/api/project/${projectId}`, {
         headers: {
@@ -68,6 +73,7 @@ export const getProjectById = async projectId => {
 }
 
 export const createNewPodcast = async (payload) => {
+    const token = JSON.parse(localStorage.getItem("userData"))?.token?.access?.token;
     let response = await axios.post('https://server-skailama-intv.vercel.app/api/podcast/new', payload, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -80,6 +86,7 @@ export const createNewPodcast = async (payload) => {
 }
 
 export const getPodcastById = async id => {
+    const token = JSON.parse(localStorage.getItem("userData"))?.token?.access?.token;
     let response = await axios.get(`https://server-skailama-intv.vercel.app/api/podcast/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -92,6 +99,7 @@ export const getPodcastById = async id => {
 }
 
 export const deletePodcast = async id => {
+    const token = JSON.parse(localStorage.getItem("userData"))?.token?.access?.token;
     let response = await axios.delete(`https://server-skailama-intv.vercel.app/api/podcast/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -104,6 +112,7 @@ export const deletePodcast = async id => {
 }
 
 export const updatePodcast = async (id, payload) => {
+    const token = JSON.parse(localStorage.getItem("userData"))?.token?.access?.token;
     // return console.log(id, payload)
     let response = await axios.put(`https://server-skailama-intv.vercel.app/api/podcast/${id}`, payload, {
         headers: {

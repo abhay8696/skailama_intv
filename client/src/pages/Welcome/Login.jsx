@@ -24,7 +24,7 @@ const Login = ({switchToRegister}) => {
         try{ 
             let res = await axios.post("https://server-skailama-intv.vercel.app/api/auth/login", formData);
             console.log(res)
-            alert("Login successfull!");
+            // alert("Login successfull!");
             localStorage.setItem("userData", JSON.stringify(res.data));
             navigate("/home")
         }catch(error){
