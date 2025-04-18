@@ -1,0 +1,78 @@
+
+.UploadModal-wrapper{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.322);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.UploadModal{
+    width: 900px;
+    max-width: 90vw;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    box-sizing: border-box;
+}
+
+.UploadModalHead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.UploadModalHead img{
+    max-width: 50px;
+    border-radius: 50%;
+}
+.UploadModalHead-text{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #3C3C3C !important;
+}
+.closeUploadModalIcon{
+    cursor: pointer;
+}
+
+.UploadModal form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.UploadModalForm-lableInput{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    gap: 0.5rem;
+}
+.UploadModalForm input{
+    color: black;
+}
+
+.UploadModal form button{
+    max-width: 200px;
+    align-self: flex-end;
+    border-radius: 8px;
+    background-color: #211935;
+    color: white;
+}
+
+
+/* above 600px */
+@media (min-width: 600px) {
+    .UploadModal{
+        padding: 3rem;
+    }
+}

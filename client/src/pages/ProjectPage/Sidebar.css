@@ -8,6 +8,16 @@
     justify-content: space-between;
     box-sizing: border-box;
     gap: 1rem;
+    position: relative;
+    background-color: white;
+}
+
+.closeSidebar-button{
+    position: absolute;
+    max-width: 50px;
+    right: -25px;
+    bottom: 250px;
+    cursor: pointer;
 }
 
 

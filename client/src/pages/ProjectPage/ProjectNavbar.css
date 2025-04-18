@@ -1,0 +1,70 @@
+
+.ProjectNavbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.ProjectNavbar-texts{
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    color: #999;
+    font-weight: 500;
+    line-height: 0;
+}
+
+.ProjectNavbar-texts-homeTab{
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.ProjectNavbar-texts-homeTab img{
+    max-width: 16px;
+}
+
+#addYourPodcast{
+    color: #7E22CE;
+}
+
+.ProjectNavbar-icons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ProjectNavbar-icons span{
+    border: 1px solid #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.ProjectNavbar-icons img{
+    max-width: 18px;
+}
+
+
+/* above 900px */
+@media (min-width: 900px) {
+    .ProjectNavbar{
+        padding: 0;
+    }
+    .ProjectNavbar-texts{
+        font-size: 1rem;
+    }
+    .ProjectNavbar-icons img{
+        max-width: 24px;
+    }
+    .ProjectNavbar-icons span{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}

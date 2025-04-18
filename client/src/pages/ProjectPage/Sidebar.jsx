@@ -7,6 +7,7 @@ import widgetIcon from "../../assets/widgetIcon.png";
 import settingsIcon from "../../assets/settings-Icon.png"
 import userImage from "../../assets/userImage.png";
 import daimondIcon from "../../assets/daimondIcon.svg"
+import closeArrowIcon from "../../assets/closeArrowIcon.svg"
 
 const Sidebar = () => {
     return (
@@ -44,6 +45,7 @@ const Sidebar = () => {
                     </span>
                 </div>
             </div>
+            <img src={closeArrowIcon} className='closeSidebar-button'/>
         </div>
     );
 };
