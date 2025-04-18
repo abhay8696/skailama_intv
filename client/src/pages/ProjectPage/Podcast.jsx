@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Podcast.css";
 import rssImage from "../../assets/rssImage.png"; 
 import youtubeImage from "../../assets/youtubeImage.png"; 
@@ -29,7 +29,7 @@ const PodcastType = ({head, image}) => {
 
 
 
-const Podcast = () => {
+const Podcast = ({fileArray}) => {
     return (
         <div className='Podcast'>
             <h1>Add Podcast</h1>
@@ -38,7 +38,7 @@ const Podcast = () => {
                 <PodcastType head="Youtube Video" image={youtubeImage}/>
                 <PodcastType head="Upload Files" image={uploadImage}/>
             </div>
-            <FileDiv />
+            <FileDiv fileArray={fileArray}/>
         </div>
     );
 };

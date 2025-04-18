@@ -52,5 +52,29 @@ export const generateShortCode = (input) => {
       // Single character
       return words[0].toUpperCase();
     }
-  }
-  
+}
+
+export const getProjectById = async projectId => {
+    console.log("getting all podcasts in this project")
+    let response = await axios.get(`https://server-skailama-intv.vercel.app/api/project/${projectId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json' // optional; axios sets this automatically for JSON
+        }
+    })
+    console.log(response.data.project)
+    if(response.status === 200) return response.data.project;
+    else throw new Error("Internal Server Error");
+}
+
+export const createNewPodcast = async (projectId, payload) => {
+    let response = await axios.post('https://server-skailama-intv.vercel.app/api/podcast/new', payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json' // optional; axios sets this automatically for JSON
+        }
+    })
+    console.log(response)
+    if(response.status === 201) return response;
+    else throw new Error("Internal Server Error");
+}

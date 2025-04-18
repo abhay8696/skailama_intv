@@ -3,10 +3,11 @@ import cloudImage from "../../assets/cloudImage.png"
 import UploadModal from './UploadModal';
 import uploadImage from "../../assets/uploadImage.png"; 
 import "./FileDiv.css"
+import { formatDate } from '../../functions/functions';
 
 
 
-const FileDiv = () => {
+const FileDiv = ({fileArray}) => {
 
     const [modalOn, setModalOn] = useState(false);
 
@@ -25,7 +26,25 @@ const FileDiv = () => {
         )
     }
 
-    const YourFiles = () => {
+    const YourFiles = ({fileArray}) => {
+        console.log(fileArray)
+        const displayFiles = () => {
+            let count = 1;
+            return fileArray.map(item => {
+                const { name, transcript, createdAt, updatedAt, projectId} = item;
+                return(
+                    <tr>
+                        <td>{count++}</td>
+                        <td>{name}</td>
+                        <td>{formatDate(createdAt)}</td>
+                        <td className='tbaleButtons'>
+                            <button className='viewButton'>View</button>
+                            <button className='deleteButton'>Delete</button>
+                        </td>
+                    </tr>
+                )
+            })
+        } 
         return(
             <div className='YourFiles'>
                 <span className='YourFiles-head'>Your Files</span>
@@ -34,29 +53,12 @@ const FileDiv = () => {
                         <tr>
                         <th>No.</th>
                         <th>Name</th>
-                        <th>Upload Date & Time</th>
+                        <th>Upload Date</th>
                         <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>THE SIDEPOD S2 EPISODE 15</td>
-                            <td>25 Oct 23 | 09:04</td>
-                            <td className='tbaleButtons'>
-                                <button className='viewButton'>View</button>
-                                <button className='deleteButton'>Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>THE SIDEPOD S2 EPISODE 15</td>
-                            <td>25 Oct 23 | 09:04</td>
-                            <td className='tbaleButtons'>
-                                <button className='viewButton'>View</button>
-                                <button className='deleteButton'>Delete</button>
-                            </td>
-                        </tr>
+                        {displayFiles()}
                     </tbody>
                 </table>
             </div>
@@ -65,8 +67,7 @@ const FileDiv = () => {
 
     return (
         <div className='fileDiv'>
-            {/* {selectFile()} */}
-            <YourFiles />
+            {fileArray?.length ? <YourFiles fileArray={fileArray}/> : selectFile()}
         </div>
     );
 };

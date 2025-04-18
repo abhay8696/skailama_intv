@@ -4,7 +4,7 @@ import homeIcon from "../../assets/homeIcon.svg";
 import bellIcon2 from "../../assets/bellIcon2.svg";
 import logoutIcon from "../../assets/logoutIcon.svg";
 
-const ProjectNavbar = () => {
+const ProjectNavbar = ({projectName}) => {
     return (
         <div className='ProjectNavbar'>
             <div className='ProjectNavbar-texts'>
@@ -13,7 +13,7 @@ const ProjectNavbar = () => {
                     <span>Home Page</span>
                 </span>
                 <span>/</span>
-                <span>Sample Project</span>         
+                <span>{projectName}</span>         
                 <span>/</span>
                 <span id='addYourPodcast'>Add your podcast</span>
             </div>

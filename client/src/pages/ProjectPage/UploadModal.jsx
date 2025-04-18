@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import closeImage from "../../assets/closeImage.png";
 import "./UploadModal.css"
+import { useParams } from 'react-router-dom';
 
 const UploadModal = (props) => {
     const { closeModal, source, image } = props;
+    const { id } = useParams();
     //states
     const [formData, setFormData] = useState({
-        fileName: "",
-        transcriptText: ""
+        name: "",
+        transcript: ""
     });
 
     //functions
@@ -23,7 +25,7 @@ const UploadModal = (props) => {
     }
 
     return (
-        <div className='UploadModal-wrapper'>
+        <div className='UploadModal-wrapper' >
             <div className='UploadModal'>
                 <span className='UploadModalHead'>
                     <div className='UploadModalHead-text'>
@@ -37,11 +39,11 @@ const UploadModal = (props) => {
                 <form className='UploadModalForm' onSubmit={handleSubmit}>
                     <div className='UploadModalForm-lableInput'>
                         <label htmlFor='name'>Name</label>
-                        <input id='name' name="fileName" value={formData.fileName} onChange={handleChange} required/>
+                        <input id='name' name="name" value={formData.name} onChange={handleChange} required/>
                     </div>
                     <div className='UploadModalForm-lableInput'>
                         <label htmlFor='transcript'>Transcript</label>
-                        <input id='transcript' name="transcriptText" value={formData.ranscriptText} onChange={handleChange} required/>
+                        <input id='transcript' name="transcript" value={formData.ranscriptText} onChange={handleChange} required/>
                     </div>
                     <button type='submit'>Upload</button>
                 </form>
