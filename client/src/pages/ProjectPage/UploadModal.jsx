@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import closeImage from "../../assets/closeImage.png";
 import "./UploadModal.css"
 import { useParams } from 'react-router-dom';
+import { createNewPodcast } from '../../functions/functions';
 
 const UploadModal = (props) => {
-    const { closeModal, source, image } = props;
+    const { closeModal, source, image, projectId } = props;
     const { id } = useParams();
     //states
     const [formData, setFormData] = useState({
@@ -20,12 +21,17 @@ const UploadModal = (props) => {
             ...formData, [name]: value
         })
     }
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
+        let response = await createNewPodcast({
+            projectId, ...formData
+        });
+        alert(response.data.message)
+        window.location.reload();
     }
 
     return (
-        <div className='UploadModal-wrapper' >
+        <div className='UploadModal-wrapper'>
             <div className='UploadModal'>
                 <span className='UploadModalHead'>
                     <div className='UploadModalHead-text'>

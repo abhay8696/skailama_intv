@@ -67,7 +67,7 @@ export const getProjectById = async projectId => {
     else throw new Error("Internal Server Error");
 }
 
-export const createNewPodcast = async (projectId, payload) => {
+export const createNewPodcast = async (payload) => {
     let response = await axios.post('https://server-skailama-intv.vercel.app/api/podcast/new', payload, {
         headers: {
           Authorization: `Bearer ${token}`,

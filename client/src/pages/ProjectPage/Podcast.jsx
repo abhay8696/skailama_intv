@@ -7,36 +7,40 @@ import FileDiv from './FileDiv';
 import UploadModal from './UploadModal';
 
 
-const PodcastType = ({head, image}) => {
+const PodcastType = ({head, image, projectId}) => {
 
-    const [modalOn, setModalOn] = useState(false);
+    const [uploadModalOn, setUploadModalOn] = useState(false);
 
     //functions
-    const handleModal = () => setModalOn(!modalOn);
+    const handleUploadModal = () => {
+        setUploadModalOn(!uploadModalOn);
+    }
 
     return (
-        <div className='PodcastType' onClick={handleModal}>
+        <>
+        <div className='PodcastType' onClick={handleUploadModal}>
             <div className='podcastType-text'>
                 <span className='podcastType-head'>{head}</span>
                 <span className='podcastType-p'>Lorem ipsum dolor sit. 
                 Dolor lorem sit.</span>
             </div>
             <img src={image} />
-            {modalOn ? <UploadModal closeModal={handleModal} source={head} image={image}/> : null}
         </div>
+        {uploadModalOn ? <UploadModal projectId={projectId} closeModal={handleUploadModal} source={head} image={image}/> : null}
+        </>
     )
 }
 
 
 
-const Podcast = ({fileArray}) => {
+const Podcast = ({fileArray, projectId}) => {
     return (
         <div className='Podcast'>
             <h1>Add Podcast</h1>
             <div className='podcast-tiles'>
-                <PodcastType head="RSS Feed" image={rssImage}/>
-                <PodcastType head="Youtube Video" image={youtubeImage}/>
-                <PodcastType head="Upload Files" image={uploadImage}/>
+                <PodcastType projectId={projectId} head="RSS Feed" image={rssImage}/>
+                <PodcastType projectId={projectId} head="Youtube Video" image={youtubeImage}/>
+                <PodcastType projectId={projectId} head="Upload Files" image={uploadImage}/>
             </div>
             <FileDiv fileArray={fileArray}/>
         </div>

@@ -37,7 +37,7 @@ const ProjectPage = () => {
             <Sidebar />
             <div className='ProjectPage-body'>
                 <ProjectNavbar projectName={projectData.name}/>
-                <Podcast fileArray={fileArray}/>
+                <Podcast fileArray={fileArray} projectId={projectId}/>
                 {/* <Transcript /> */}
             </div>
         </div>
