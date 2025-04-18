@@ -24,9 +24,49 @@ const FileDiv = () => {
             </div>
         )
     }
+
+    const YourFiles = () => {
+        return(
+            <div className='YourFiles'>
+                <span className='YourFiles-head'>Your Files</span>
+                <table>
+                    <thead>
+                        <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Upload Date & Time</th>
+                        <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>THE SIDEPOD S2 EPISODE 15</td>
+                            <td>25 Oct 23 | 09:04</td>
+                            <td className='tbaleButtons'>
+                                <button className='viewButton'>View</button>
+                                <button className='deleteButton'>Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>THE SIDEPOD S2 EPISODE 15</td>
+                            <td>25 Oct 23 | 09:04</td>
+                            <td className='tbaleButtons'>
+                                <button className='viewButton'>View</button>
+                                <button className='deleteButton'>Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
+
     return (
         <div className='fileDiv'>
-            {selectFile()}
+            {/* {selectFile()} */}
+            <YourFiles />
         </div>
     );
 };

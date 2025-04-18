@@ -1,0 +1,51 @@
+
+.Transcript{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.transcirpt-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.transcirpt-head h1{ 
+    font-size: 40px;
+}
+
+.transcirpt-head button{ 
+    background-color: #211935;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+.transcirpt-body{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.transcirpt-body span{
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #7E22CE;
+}
+
+.transcirpt-body textarea{
+    background-color: white;
+    border: none;
+    outline: none;
+    color: #63635E;
+}
+
+
+/* below 600px */
+@media (max-width: 600px) {
+
+}

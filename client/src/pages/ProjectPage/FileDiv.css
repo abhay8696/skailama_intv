@@ -1,0 +1,66 @@
+
+.fileDiv{
+    padding: 1rem;
+}
+.YourFiles{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    gap: 1rem;
+}
+
+.YourFiles .YourFiles-head{
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.YourFiles table{
+    text-align: center;
+    font-size: 0.9rem;
+}
+.YourFiles thead{
+    background-color: #EDEDED;
+    color: #646464;
+}
+.tbaleButtons{
+    display: flex;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+td, th{
+    padding: 0.5rem;
+}
+.viewButton, .deleteButton{
+    background-color: white;
+    border: 1px solid #64646471;
+    outline: none;
+}
+.viewButton{
+    color: black;
+    border-radius: 4px 0 0 4px;
+}
+.deleteButton{
+    color: red;
+    border-radius: 0 4px 4px 0;
+}
+.tableRowBreak{
+    border-top: 1px solid #64646471;
+}
+
+
+/* above 1000px */
+@media (min-width: 1000px) {
+    .fileDiv{
+        padding: 2rem 4rem;
+    }
+}
+/* above 1400px */
+@media (min-width: 1400px) {
+    .fileDiv{
+        padding: 2rem 8rem;
+    }
+}
