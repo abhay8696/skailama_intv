@@ -17,11 +17,24 @@ const testRoute = require("./testRoute");
 const app = express();
 
 // Allow specific origin or use "*" for all (dev only)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://skailama-intv.vercel.app"
+];
+
 app.use(cors({
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true
-  }));
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
+
 
 app.use(bodyParser.json());
 app.use(passport.initialize()); // to protect routes with authorization
