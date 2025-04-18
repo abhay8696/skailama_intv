@@ -1,0 +1,6 @@
+
+.ProjectPage{
+    display: flex;
+    justify-content: flex-start;
+    width: 100vw;
+}

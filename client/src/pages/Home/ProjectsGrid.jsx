@@ -34,6 +34,16 @@ const ProjectsGrid = () => {
                 </div>
                 <div className='tilesGrid'>
                     {projectTile()}
+                    {projectTile()}
+                    {projectTile()}
+                    {projectTile()}
+                    {projectTile()}
+                    {projectTile()}
+                    {projectTile()}
+                    {projectTile()}
+                    {projectTile()}
+                    {projectTile()}
+                    {projectTile()}
                 </div>
                 {modalOn ? <ProjectModal closeModal={handleModal} /> : null}
             </div>

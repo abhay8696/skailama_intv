@@ -8,8 +8,8 @@ const Home = () => {
     return (
         <div className='Home'>
             <Navbar />
-            {/* <Create /> */}
-            <ProjectsGrid />
+            <Create />
+            {/* <ProjectsGrid /> */}
         </div>
     );
 };

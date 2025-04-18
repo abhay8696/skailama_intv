@@ -1,0 +1,104 @@
+
+.Sidebar{
+    min-width: 250px;
+    width: 23vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    gap: 1rem;
+}
+
+
+/* below 900px */
+@media (max-width: 900px) {
+    .Sidebar{
+        display: none;
+    }
+}
+.sidebarLogo{
+    max-width: 186px;
+    align-self: flex-start;
+    padding: 1rem 2rem;
+}
+
+.sidebar-body{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidebarOption{
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem 2rem;
+}
+
+.sidebarOption-selected{
+    background-color: #F3E8FF88;
+}
+.sidebarOption-selected .sidebar-text{
+    color: #7E22CE;
+    font-weight: bold;
+}
+.sidebarIcon{
+    flex: 1;
+    max-width: 16px;
+}
+
+.sidebar-text{
+    flex: 9;
+    text-align: left;
+    margin-left: 1rem;
+    color: #646464;
+}
+.sidebar-bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 2rem;
+}
+.sidebar-bottom-div{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #646464;
+}
+
+.sidebar-bottom-div img {
+    max-width: 32px;
+}
+
+.userImage{
+    max-width: 50px;
+}
+
+.userDiv{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.breakDiv{
+    border-top: 1px solid #64646457;
+}
+.userDiv-texts{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.userDiv-texts .userName{
+    font-weight: 500;
+}
+
+.userDiv-texts .userEmail{
+    font-weight: 300;
+    font-size: 0.8rem;
+}
