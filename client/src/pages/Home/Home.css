@@ -1,0 +1,23 @@
+
+.Home{
+    width: 100vw;
+    max-width: 1280px;
+    height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+
+/* above 600px */
+@media (min-width: 600px) {
+    .Home{
+        padding: 1rem;
+    }
+}
+
+/* above 900px */
+@media (min-width: 900px) {
+    .Home{
+        /* padding: 1rem 5rem; */
+    }
+}

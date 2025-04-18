@@ -1,0 +1,33 @@
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 1rem 0; */
+}
+
+.nav-logo{
+    max-width: 150px;
+}
+.nav-buttons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.nav-button-img{
+    max-width: 30px;
+}
+
+
+/* above 600px */
+@media (min-width: 600px) {
+    nav{
+        padding: 1rem 0;
+    }
+    .nav-logo{
+        max-width: 268px;
+    }
+    .nav-button-img{
+        max-width: 40px;
+    }
+}
