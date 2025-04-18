@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const httpStatus = require("http-status");
@@ -14,6 +15,13 @@ const testRoute = require("./testRoute");
 
 
 const app = express();
+
+// Allow specific origin or use "*" for all (dev only)
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true
+  }));
 
 app.use(bodyParser.json());
 app.use(passport.initialize()); // to protect routes with authorization
