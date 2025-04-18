@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
+import { createProject } from '../../functions/functions';
+import { useNavigate } from 'react-router-dom';
 
 const ProjectModal = props => {
     const { closeModal } = props;
+    const navigate = useNavigate();
     //states
-    const [projectName, setProjectName] = useState("");
+    const [name, setName] = useState("");
     const [error, setError] = useState(false);
 
     //functions
     const handleChange = e => {
-        setProjectName(e.target.value);
+        setName(e.target.value);
         setError(false);
     }
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        if(projectName.length === 0 ) setError(true)
+        if(name.length === 0 ) setError(true)
+        
+        const res = await createProject({name});
+        if(res.status === 201){
+            alert("New project created successfully.");
+            window.location.reload();
+        }
     }
     return (
         <div className='projectModal-wrapper'>

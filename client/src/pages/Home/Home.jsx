@@ -11,6 +11,7 @@ const Home = () => {
     const [projectsArray, setProjectsArray] = useState([]);
 
     useEffect(()=> {
+        console.log("use effect")
         const userData = localStorage.getItem("userData");
         if(!userData){
             navigate("/");
@@ -18,10 +19,11 @@ const Home = () => {
         getAllProjectsFormDB();
     }, []);
 
+
     const getAllProjectsFormDB = async () => {
         try{
-            let allProjects = await getAllProjects();
-            setProjectsArray(allProjects)
+            let res = await getAllProjects();
+            setProjectsArray([...res.projects])
         }catch(error){
             let msg = error?.response?.data?.message || "Something went wrong!";
             alert(msg);
@@ -32,7 +34,7 @@ const Home = () => {
         <div className='Home'>
             <Navbar />
             {
-                projectsArray?.length ? <ProjectsGrid /> : <Create />
+                projectsArray?.length ? <ProjectsGrid projectsArray={projectsArray}/> : <Create />
             }
         </div>
     );

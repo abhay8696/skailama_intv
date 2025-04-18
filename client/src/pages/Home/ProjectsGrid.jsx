@@ -2,25 +2,34 @@ import React, { useState } from 'react';
 import "./ProjectsGrid.css";
 import addIcon from "../../assets/addIcon.png"
 import ProjectModal from './ProjectModal';
+import { formatDate, generateShortCode } from '../../functions/functions';
 
-const ProjectsGrid = () => {
+const ProjectsGrid = ({projectsArray}) => {
 
     //states
     const [modalOn, setModalOn] = useState(false);
 
     //functions
     const handleModal = () => setModalOn(!modalOn);
-    const projectTile = () => {
+    const projectTile = (name, fileCount, lastUpdated) => {
         return(
             <div className='projectTile'>
-                <span className='tileIcon'>SP</span>
+                <span className='tileIcon'>{generateShortCode(name)}</span>
                 <span className='tileTexts'>
-                    <span className='tileName'>sample project</span>
-                    <span className='tile-fileCount'>4 files</span>
-                    <span className='tile-timeStamp'>Last edited: a week ago</span>
+                    <span className='tileName'>{name}</span>
+                    <span className='tile-fileCount'>{fileCount} files</span>
+                    <span className='tile-timeStamp'>Last edited: {formatDate(lastUpdated)}</span>
                 </span>
             </div>
         )
+    }
+    const displayTiles = () => {
+        if(projectsArray?.length){
+            return projectsArray.map(tile => {
+                const {name, lastUpdated, fileCount} = tile;
+                return projectTile(name, fileCount, lastUpdated)
+            })
+        }
     }
     return (
         <div className='Projects-Grid'>
@@ -33,17 +42,7 @@ const ProjectsGrid = () => {
                     </button>
                 </div>
                 <div className='tilesGrid'>
-                    {projectTile()}
-                    {projectTile()}
-                    {projectTile()}
-                    {projectTile()}
-                    {projectTile()}
-                    {projectTile()}
-                    {projectTile()}
-                    {projectTile()}
-                    {projectTile()}
-                    {projectTile()}
-                    {projectTile()}
+                    { displayTiles()}
                 </div>
                 {modalOn ? <ProjectModal closeModal={handleModal} /> : null}
             </div>
