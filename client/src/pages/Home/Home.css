@@ -6,12 +6,49 @@
     padding: 1rem;
     box-sizing: border-box;
 }
-
-
+.createPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.createPage-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    max-width: 900px;
+}
+.createPage h1{
+    color: #7E22CE;
+    font-size: 2rem;
+    font-weight: 500;
+}
+.createPage-image{
+    max-width: 80vw;
+}
+.createPage p{
+    color: #838383;
+}
+.createPage button{
+    background-color: #211935;
+    border: 8px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 2rem;
+}
+.createPageButtonIcon{
+    max-width: 20px;
+}
 /* above 600px */
 @media (min-width: 600px) {
     .Home{
         padding: 1rem;
+    }
+    .createPage h1{
+        font-size: 3rem;
     }
 }
 
