@@ -16,9 +16,13 @@ const testRoute = require("./testRoute");
 
 const app = express();
 
-// enable cors
-app.use(cors());
-app.options("*", cors());
+//
+app.use(cors({
+  origin: 'https://skailama-intv.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
+
 
 app.use(bodyParser.json());
 app.use(passport.initialize()); // to protect routes with authorization
